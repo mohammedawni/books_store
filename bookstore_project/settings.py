@@ -37,15 +37,36 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     #Local installed apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
 
     #3rd party
     'crispy_forms',
-
-
+    'allauth',# new
+    'allauth.account',
 ]
+
+# django-allauth config
+SITE_ID= 1
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT='home'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+
+AUTHENTICATION_BACKENDS=(
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK='bootstrap4'
@@ -117,6 +138,10 @@ AUTH_PASSWORD_VALIDATORS = [
 #Change default user 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -143,6 +168,3 @@ STATICFILES_FINDERS=[
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     ]
 
-#Authentication setttings
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
