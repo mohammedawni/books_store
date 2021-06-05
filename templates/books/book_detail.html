@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+
+
+{% block title %}
+    {{book.title}}
+{% endblock title %}
+    
+
+{% block content %}
+    
+
+        <div class="book-detail"> 
+            <h2><a href={{book.get_abolute_url}}>{{ book.title }}</a></h2>
+            <p>Author: {{ book.author }}</p>
+            <p>Price: {{ book.price }}$</p>
+
+            <div>
+                <h2>Reviews</h2>
+                <ul>
+                    {% for review in book.reviews.all %}
+                        <li>
+                            {{review.author}}: {{review.review}}
+                        </li>
+                    {% endfor %}
+                    
+                    {% if book.reviews.count == 0 %}
+                        <h1>There is no reviews yet.</h1>
+                    {% endif %}
+                        
+                </ul>
+            </div>
+        </div>
+
+
+
+        
+{% endblock content %}
+    

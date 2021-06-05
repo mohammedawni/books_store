@@ -2,6 +2,10 @@ h1{
     color: rgba(238, 20, 31, 0.39);
 }
 
+h2{
+    color: red;
+}
+
 .bookcover{
     width: auto;
     height: 300px;

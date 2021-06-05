@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #Local installed apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 
     #3rd party
     'crispy_forms',
@@ -60,6 +61,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
 
 AUTHENTICATION_BACKENDS=(
     'django.contrib.auth.backends.ModelBackend',
